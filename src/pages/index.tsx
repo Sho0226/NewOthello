@@ -26,28 +26,25 @@ const Home = () => {
   ];
 
   const newBoard = structuredClone(board);
+
   const clickHandler = (x: number, y: number) => {
     for (const direct of directions) {
       const [x_d, y_d] = direct;
       if (board[y][x] === 0) {
         for (let i = 1; i < 8; i++) {
           if (board[y + y_d * i] !== undefined && board[y + y_d * i][x + x_d * i] !== undefined) {
-            if (board[y + y_d * i][x + x_d * i] !== 0) {
-              if (board[y + y_d][x + x_d] === 3 - turnColor)
-                if (board[y + y_d * i][x + x_d * i] === turnColor) {
-                  if (i > 1) {
-                    if (board[y + y_d * i][x + x_d * i] !== board[y + y_d][x + x_d]) {
-                      for (let s = i; s >= 0; s--) {
-                        newBoard[y + y_d * s][x + x_d * s] = turnColor;
-                      }
-                    }
-                    newBoard[y + y_d * i][x + x_d * i] = turnColor;
-                    setTurnColor(3 - turnColor);
-                    setBoard(newBoard);
-                    break;
+            if (board[y + y_d][x + x_d] === 3 - turnColor)
+              if (board[y + y_d * i][x + x_d * i] === turnColor) {
+                if (board[y + y_d * i][x + x_d * i] !== board[y + y_d][x + x_d]) {
+                  for (let s = i; s >= 0; s--) {
+                    newBoard[y + y_d * s][x + x_d * s] = turnColor;
                   }
+                  newBoard[y + y_d * i][x + x_d * i] = turnColor;
+                  setTurnColor(3 - turnColor);
+                  setBoard(newBoard);
+                  break;
                 }
-            }
+              }
           }
         }
       }
