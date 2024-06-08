@@ -35,15 +35,13 @@ const Home = () => {
           if (board[y + y_d * i] !== undefined && board[y + y_d * i][x + x_d * i] !== undefined) {
             if (board[y + y_d][x + x_d] === 3 - turnColor)
               if (board[y + y_d * i][x + x_d * i] === turnColor) {
-                if (board[y + y_d * i][x + x_d * i] !== board[y + y_d][x + x_d]) {
-                  for (let s = i; s >= 0; s--) {
-                    newBoard[y + y_d * s][x + x_d * s] = turnColor;
-                  }
-                  newBoard[y + y_d * i][x + x_d * i] = turnColor;
-                  setTurnColor(3 - turnColor);
-                  setBoard(newBoard);
-                  break;
-                }
+                Array.from({ length: i + 1 }, (_, s) => {
+                  newBoard[y + y_d * s][x + x_d * s] = turnColor;
+                });
+                newBoard[y + y_d * i][x + x_d * i] = turnColor;
+                setTurnColor(3 - turnColor);
+                setBoard(newBoard);
+                break;
               }
           }
         }
