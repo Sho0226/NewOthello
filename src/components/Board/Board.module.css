@@ -1,0 +1,16 @@
+.cellstyle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border: dotted 1px;
+  border-color: black;
+}
+
+.stonestyle {
+  width: 56px;
+  height: 56px;
+  cursor: pointer;
+  background-color: white;
+}
