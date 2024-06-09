@@ -2,8 +2,24 @@ import { useState } from 'react';
 import styles from './index.module.css';
 
 const Home = () => {
-  const [turnColor, setTurnColor] = useState(1);
-  const [board, setBoard] = useState([
+  const getRandomPercentageInRange = (min: number, max: number): string => {
+    return `${Math.floor(Math.random() * (max - min + 1)) + min}%`;
+  };
+
+  const getRandomBorderRadius = (): string => {
+    const horizontal1 = getRandomPercentageInRange(40, 60);
+    const horizontal2 = getRandomPercentageInRange(40, 60);
+    const horizontal3 = getRandomPercentageInRange(40, 60);
+    const horizontal4 = getRandomPercentageInRange(40, 60);
+    const vertical1 = getRandomPercentageInRange(50, 60);
+    const vertical2 = getRandomPercentageInRange(50, 60);
+    const vertical3 = getRandomPercentageInRange(50, 60);
+    const vertical4 = getRandomPercentageInRange(50, 60);
+
+    return `${horizontal1} ${horizontal2} ${horizontal3} ${horizontal4} / ${vertical1} ${vertical2} ${vertical3} ${vertical4}`;
+  };
+
+  const initialBoard = [
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0],
@@ -12,7 +28,13 @@ const Home = () => {
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0],
-  ]);
+  ];
+
+  const initialBorderRadii = initialBoard.map((row) => row.map((cell) => (cell !== 0 ? getRandomBorderRadius() : '')));
+
+  const [turnColor, setTurnColor] = useState(1);
+  const [board, setBoard] = useState<number[][]>(initialBoard);
+  const [borderRadii, setBorderRadii] = useState<string[][]>(initialBorderRadii);
 
   const directions = [
     [0, 1], // Down
@@ -26,24 +48,27 @@ const Home = () => {
   ];
 
   const newBoard = structuredClone(board);
+  const newBorderRadii = structuredClone(borderRadii);
 
   const clickHandler = (x: number, y: number) => {
+    if (board[y][x] !== 0) return;
     for (const direct of directions) {
       const [x_d, y_d] = direct;
-      if (board[y][x] === 0) {
-        for (let i = 1; i < 8; i++) {
-          if (board[y + y_d * i] !== undefined && board[y + y_d * i][x + x_d * i] !== undefined) {
-            if (board[y + y_d][x + x_d] === 3 - turnColor)
-              if (board[y + y_d * i][x + x_d * i] === turnColor) {
-                Array.from({ length: i + 1 }, (_, s) => {
-                  newBoard[y + y_d * s][x + x_d * s] = turnColor;
-                });
-                newBoard[y + y_d * i][x + x_d * i] = turnColor;
-                setTurnColor(3 - turnColor);
-                setBoard(newBoard);
-                break;
-              }
-          }
+
+      for (let i = 1; i < 8; i++) {
+        if (board[y + y_d * i] !== undefined && board[y + y_d * i][x + x_d * i] !== undefined) {
+          if (board[y + y_d][x + x_d] === 3 - turnColor)
+            if (board[y + y_d * i][x + x_d * i] === turnColor) {
+              Array.from({ length: i + 1 }, (_, s) => {
+                newBoard[y + y_d * s][x + x_d * s] = turnColor;
+                newBorderRadii[y + y_d * s][x + x_d * s] = borderRadii[y + y_d * s][x + x_d * s] || getRandomBorderRadius();
+              });
+              newBoard[y + y_d * i][x + x_d * i] = turnColor;
+              setTurnColor(3 - turnColor);
+              setBoard(newBoard);
+              setBorderRadii(newBorderRadii);
+              break;
+            }
         }
       }
     }
@@ -56,10 +81,7 @@ const Home = () => {
           row.map((color, x) => (
             <div className={styles.cellstyle} key={`${x}-${y}`} onClick={() => clickHandler(x, y)}>
               {color !== 0 && (
-                <div
-                  className={styles.stonestyle}
-                  style={{ background: color === 1 ? '#000' : '#fff' }}
-                />
+                <div className={styles.stonestyle} style={{ background: color === 1 ? '#000' : '#fff', borderRadius: borderRadii[y][x] }} />
               )}
             </div>
           )),
