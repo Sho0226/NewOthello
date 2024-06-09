@@ -1,4 +1,4 @@
-import styles from '../../pages/index.module.css';
+import styles from './Board.module.css';
 
 type Props = {
   board: number[][];
@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const Board = ({ board, clickHandler, borderRadii }: Props) => (
-  <div>
+  <div className={styles.board}>
     {board.map((row, y) =>
       row.map((color, x) => (
         <div className={styles.cellstyle} key={`${x}-${y}`} onClick={() => clickHandler(x, y)}>

@@ -74,5 +74,7 @@ export const useGame = () => {
   };
   return {
     clickHandler,
+    board,
+    borderRadii,
   };
 };

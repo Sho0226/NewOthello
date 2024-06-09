@@ -14,3 +14,8 @@
   cursor: pointer;
   background-color: white;
 }
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+}
