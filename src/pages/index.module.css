@@ -6,8 +6,9 @@
   height: 100vh;
   min-height: 100vh;
   padding: 0 0.5rem;
-  background-image: url('/src/imgs/grass.jpg');
+  background-image: url('~/src/imgs/full_Texture_with_color_variation.webp');
   background-position: center;
+  background-size: cover;
 }
 
 .boardstyle {
