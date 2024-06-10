@@ -28,7 +28,7 @@
 
 @media (width <= 480px) {
   .boardstyle {
-    width: 95%;
+    width: 90%;
     height: auto;
     padding: 5px;
   }
