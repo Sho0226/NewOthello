@@ -22,12 +22,14 @@
 @media (width <= 768px) {
   .boardstyle {
     width: 90%;
+    height: auto;
   }
 }
 
 @media (width <= 480px) {
   .boardstyle {
     width: 100%;
+    height: auto;
     padding: 5px;
   }
 }
