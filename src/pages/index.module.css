@@ -18,3 +18,16 @@
   height: 640px;
   background-color: rgb(35 73 35);
 }
+
+@media (width <= 768px) {
+  .boardstyle {
+    max-width: 90%;
+  }
+}
+
+@media (width <= 480px) {
+  .boardstyle {
+    max-width: 100%;
+    padding: 5px;
+  }
+}

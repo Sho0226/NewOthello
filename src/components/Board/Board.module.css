@@ -19,3 +19,27 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+@media (width <= 768px) {
+  .cellstyle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .stonestyle {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media (width <= 480px) {
+  .cellstyle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .stonestyle {
+    width: 28px;
+    height: 28px;
+  }
+}
