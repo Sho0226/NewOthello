@@ -21,13 +21,13 @@
 
 @media (width <= 768px) {
   .boardstyle {
-    max-width: 90%;
+    width: 90%;
   }
 }
 
 @media (width <= 480px) {
   .boardstyle {
-    max-width: 100%;
+    width: 100%;
     padding: 5px;
   }
 }
