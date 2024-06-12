@@ -1,15 +1,3 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  padding: 0 0.5rem;
-  background-image: url('~/src/imgs/full_Texture_with_color_variation.webp');
-  background-position: center;
-  background-size: cover;
-}
-
 .stonestyle {
   width: 80%; /* Adjusted to fit within the cell */
   height: 80%;
@@ -29,8 +17,6 @@
 .board {
   display: flex;
   flex-wrap: wrap;
-  width: 75vh;
-  height: 75vh;
   background-color: rgb(35 73 35);
 }
 
@@ -61,55 +47,3 @@
     height: 30vh;
   }
 }
-
-/* @media (width <= 1200px) {
-  .cellstyle {
-    width: 60vh;
-    height: 60vh;
-  }
-
-  .stonestyle {
-    width: 42px;
-    height: 42px;
-  }
-}
-
-@media (width <= 480px) {
-  .cellstyle {
-    width: 40px;
-    height: 40px;
-  }
-
-  .stonestyle {
-    width: 28px;
-    height: 28px;
-  }
-}
-
-@media (width <= 1200px) {
-  .boardstyle {
-    width: 60%;
-    height: 60%;
-  }
-}
-
-@media (width <= 900px) {
-  .boardstyle {
-    width: 70%;
-    height: 70%;
-  }
-}
-
-@media (width <= 600px) {
-  .boardstyle {
-    width: 80%;
-    height: 80%;
-  }
-}
-
-@media (width <= 400px) {
-  .boardstyle {
-    width: 90%;
-    height: 90%;
-  }
-} */
