@@ -55,19 +55,23 @@ export const useGame = () => {
       const [x_d, y_d] = direct;
 
       for (let i = 1; i < 8; i++) {
-        if (board[y + y_d * i] !== undefined && board[y + y_d * i][x + x_d * i] !== undefined) {
-          if (board[y + y_d][x + x_d] === 3 - turnColor)
-            if (board[y + y_d * i][x + x_d * i] === turnColor) {
-              Array.from({ length: i + 1 }, (_, s) => {
-                newBoard[y + y_d * s][x + x_d * s] = turnColor;
-                newBorderRadii[y + y_d * s][x + x_d * s] = borderRadii[y + y_d * s][x + x_d * s] || getRandomBorderRadius();
-              });
-              newBoard[y + y_d * i][x + x_d * i] = turnColor;
-              setTurnColor(3 - turnColor);
-              setBoard(newBoard);
-              setBorderRadii(newBorderRadii);
-              break;
-            }
+        if (
+          board[y + y_d * i] !== undefined &&
+          board[y + y_d * i][x + x_d * i] !== undefined &&
+          board[y + y_d][x + x_d] !== 0 &&
+          board[y + y_d][x + x_d] === 3 - turnColor
+        ) {
+          if (board[y + y_d * i][x + x_d * i] === turnColor) {
+            Array.from({ length: i + 1 }, (_, s) => {
+              newBoard[y + y_d * s][x + x_d * s] = turnColor;
+              newBorderRadii[y + y_d * s][x + x_d * s] = borderRadii[y + y_d * s][x + x_d * s] || getRandomBorderRadius();
+            });
+            newBoard[y + y_d * i][x + x_d * i] = turnColor;
+            setTurnColor(3 - turnColor);
+            setBoard(newBoard);
+            setBorderRadii(newBorderRadii);
+            break;
+          }
         }
       }
     }
