@@ -76,22 +76,30 @@ export const useGame = () => {
       }
     }
   };
-  let blackcount = 0;
-  let whitecount = 0;
-  for (let a = 0; a < 8; a++) {
-    for (let b = 0; b < 8; b++) {
-      if (board[a][b] === 1) {
-        blackcount++;
-      } else if (board[a][b] === 2) {
-        whitecount++;
+
+  const colors = () => {
+    let blackcount = 0;
+    let whitecount = 0;
+
+    for (let a = 0; a < 8; a++) {
+      for (let b = 0; b < 8; b++) {
+        if (board[a][b] === 1) {
+          blackcount++;
+        } else if (board[a][b] === 2) {
+          whitecount++;
+        }
       }
     }
-  }
-  console.log('黒:', blackcount, '白:', whitecount);
+    return { blackcount, whitecount };
+  };
+
+  const result = colors();
 
   return {
     clickHandler,
     board,
     borderRadii,
+    colors,
+    result,
   };
 };
