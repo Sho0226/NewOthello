@@ -17,6 +17,8 @@
 .board {
   display: flex;
   flex-wrap: wrap;
+  width: 80vh;
+  height: 80vh;
   background-color: rgb(35 73 35);
 }
 
