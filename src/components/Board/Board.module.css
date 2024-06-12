@@ -2,7 +2,6 @@
   width: 80%; /* Adjusted to fit within the cell */
   height: 80%;
   cursor: pointer;
-  background-color: white;
 }
 
 .cellstyle {

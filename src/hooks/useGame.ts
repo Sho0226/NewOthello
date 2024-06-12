@@ -21,10 +21,10 @@ export const useGame = () => {
   const initialBoard = [
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 1, 2, 0, 0, 0],
-    [0, 0, 0, 2, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 3, 0, 0, 0],
+    [0, 0, 0, 1, 2, 3, 0, 0],
+    [0, 0, 3, 2, 1, 0, 0, 0],
+    [0, 0, 0, 3, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0],
   ];
@@ -50,7 +50,7 @@ export const useGame = () => {
   const newBorderRadii = structuredClone(borderRadii);
 
   const clickHandler = (x: number, y: number) => {
-    if (board[y][x] !== 0) return;
+    if (board[y][x] !== 3) return;
     for (const direct of directions) {
       const [x_d, y_d] = direct;
 
@@ -101,5 +101,6 @@ export const useGame = () => {
     borderRadii,
     colors,
     result,
+    turnColor,
   };
 };
