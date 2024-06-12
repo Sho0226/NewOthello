@@ -6,9 +6,7 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.boardstyle}>
-        <Board board={board} clickHandler={clickHandler} borderRadii={borderRadii} />
-      </div>
+      <Board board={board} clickHandler={clickHandler} borderRadii={borderRadii} />
     </div>
   );
 };

@@ -1,29 +1,71 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 0 0.5rem;
+  background-image: url('~/src/imgs/full_Texture_with_color_variation.webp');
+  background-position: center;
+  background-size: cover;
+}
+
+.stonestyle {
+  width: 80%; /* Adjusted to fit within the cell */
+  height: 80%;
+  cursor: pointer;
+  background-color: white;
+}
+
 .cellstyle {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80px;
-  height: 80px;
-  border: dotted 1px;
-  border-color: black;
-}
-
-.stonestyle {
-  width: 56px;
-  height: 56px;
-  cursor: pointer;
-  background-color: white;
+  width: 12.5%; /* 1/8 of the board width */
+  height: 12.5%; /* 1/8 of the board height */
+  border: dotted 1px black;
 }
 
 .board {
   display: flex;
   flex-wrap: wrap;
+  width: 75vh;
+  height: 75vh;
+  background-color: rgb(35 73 35);
 }
 
-@media (width <= 768px) {
+@media (width <= 1200px) {
+  .board {
+    width: 75vh;
+    height: 75vh;
+  }
+}
+
+@media (width <= 900px) {
+  .board {
+    width: 60vh;
+    height: 60vh;
+  }
+}
+
+@media (width <= 600px) {
+  .board {
+    width: 45vh;
+    height: 45vh;
+  }
+}
+
+@media (width <= 400px) {
+  .board {
+    width: 30vh;
+    height: 30vh;
+  }
+}
+
+/* @media (width <= 1200px) {
   .cellstyle {
-    width: 60px;
-    height: 60px;
+    width: 60vh;
+    height: 60vh;
   }
 
   .stonestyle {
@@ -43,3 +85,31 @@
     height: 28px;
   }
 }
+
+@media (width <= 1200px) {
+  .boardstyle {
+    width: 60%;
+    height: 60%;
+  }
+}
+
+@media (width <= 900px) {
+  .boardstyle {
+    width: 70%;
+    height: 70%;
+  }
+}
+
+@media (width <= 600px) {
+  .boardstyle {
+    width: 80%;
+    height: 80%;
+  }
+}
+
+@media (width <= 400px) {
+  .boardstyle {
+    width: 90%;
+    height: 90%;
+  }
+} */

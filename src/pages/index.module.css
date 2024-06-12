@@ -10,26 +10,3 @@
   background-position: center;
   background-size: cover;
 }
-
-.boardstyle {
-  display: flex;
-  flex-wrap: wrap;
-  width: 640px;
-  height: 640px;
-  background-color: rgb(35 73 35);
-}
-
-@media (width <= 768px) {
-  .boardstyle {
-    width: 90%;
-    height: auto;
-  }
-}
-
-@media (width <= 480px) {
-  .boardstyle {
-    width: 85%;
-    height: auto;
-    padding: 5px;
-  }
-}
