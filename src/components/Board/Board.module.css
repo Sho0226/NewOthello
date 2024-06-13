@@ -1,6 +1,6 @@
 .stonestyle {
-  width: 80%; /* Adjusted to fit within the cell */
-  height: 80%;
+  width: 75%; /* Adjusted to fit within the cell */
+  height: 75%;
   cursor: pointer;
 }
 
@@ -14,9 +14,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 12.5%; /* 1/8 of the board width */
-  height: 12.5%; /* 1/8 of the board height */
-  border: dotted 1px black;
+  width: 10.5%; /* 1/8 of the board width */
+  height: 10.5%; /* 1/8 of the board height */
+  margin: 1%;
+  background-color: rgb(35 73 35);
 }
 
 .board {
@@ -24,7 +25,6 @@
   flex-wrap: wrap;
   width: 80vh;
   height: 80vh;
-  background-color: rgb(35 73 35);
 }
 
 @media (width <= 1200px) {
