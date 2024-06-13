@@ -49,6 +49,47 @@ export const useGame = () => {
   const newBoard = structuredClone(board);
   const newBorderRadii = structuredClone(borderRadii);
 
+  const candidate = () => {
+    for (let i = 0; i < 8; i++) {
+      for (let j = 0; j < 8; j++) {
+        if (newBoard[i][j] === 0) {
+          for (const direction of directions) {
+            const [x1, y1] = direction;
+            for (let k = 1; k < 8; k++) {
+              const newX = j + x1 * k;
+              const newY = i + y1 * k;
+
+              if (newBoard[newY] !== undefined && newBoard[newY][newX] !== undefined) {
+                if (newBoard[newY][newX] === 0) {
+                  break;
+                } else if (newBoard[newY][newX] === 3) {
+                  break;
+                } else if (newBoard[newY][newX] !== turnColor) {
+                  if (k > 1) {
+                    if (newBoard[newY][newX] === newBoard[i + y1][j + x1]) {
+                      break;
+                    } else {
+                      newBoard[i][j] = 3;
+                      newBorderRadii[i][j] = borderRadii[i][j] || getRandomBorderRadius();
+
+                      break;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  };
+  for (let a = 0; a < 8; a++) {
+    for (let b = 0; b < 8; b++) {
+      if (board[b][a] === 3) {
+        newBoard[b][a] = 0;
+      }
+    }
+  }
   const clickHandler = (x: number, y: number) => {
     if (board[y][x] !== 3) return;
     for (const direct of directions) {
@@ -70,6 +111,7 @@ export const useGame = () => {
             setTurnColor(3 - turnColor);
             setBoard(newBoard);
             setBorderRadii(newBorderRadii);
+            candidate();
             break;
           }
         }
