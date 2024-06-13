@@ -6,14 +6,14 @@ export const useGame = () => {
   };
 
   const getRandomBorderRadius = (): string => {
-    const horizontal1 = getRandomPercentageInRange(40, 60);
-    const horizontal2 = getRandomPercentageInRange(40, 60);
-    const horizontal3 = getRandomPercentageInRange(40, 60);
-    const horizontal4 = getRandomPercentageInRange(40, 60);
-    const vertical1 = getRandomPercentageInRange(50, 60);
-    const vertical2 = getRandomPercentageInRange(50, 60);
-    const vertical3 = getRandomPercentageInRange(50, 60);
-    const vertical4 = getRandomPercentageInRange(50, 60);
+    const horizontal1 = getRandomPercentageInRange(35, 65);
+    const horizontal2 = getRandomPercentageInRange(35, 65);
+    const horizontal3 = getRandomPercentageInRange(35, 65);
+    const horizontal4 = getRandomPercentageInRange(35, 65);
+    const vertical1 = getRandomPercentageInRange(45, 65);
+    const vertical2 = getRandomPercentageInRange(45, 65);
+    const vertical3 = getRandomPercentageInRange(45, 65);
+    const vertical4 = getRandomPercentageInRange(45, 65);
 
     return `${horizontal1} ${horizontal2} ${horizontal3} ${horizontal4} / ${vertical1} ${vertical2} ${vertical3} ${vertical4}`;
   };

@@ -4,6 +4,12 @@
   cursor: pointer;
 }
 
+.candidatestonestyle {
+  width: 35%; /* Adjusted to fit within the cell */
+  height: 35%;
+  cursor: pointer;
+}
+
 .cellstyle {
   display: flex;
   align-items: center;
