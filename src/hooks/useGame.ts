@@ -53,28 +53,24 @@ export const useGame = () => {
     for (let i = 0; i < 8; i++) {
       for (let j = 0; j < 8; j++) {
         if (newBoard[i][j] === 0) {
-          for (const direction of directions) {
-            const [x1, y1] = direction;
+          for (const [dx, dy] of directions) {
+            let hasOpponentBetween = false; // 間に相手の石があるかどうかを示すフラグ
             for (let k = 1; k < 8; k++) {
-              const newX = j + x1 * k;
-              const newY = i + y1 * k;
+              const newX = j + dx * k;
+              const newY = i + dy * k;
 
-              if (newBoard[newY] !== undefined && newBoard[newY][newX] !== undefined) {
-                if (newBoard[newY][newX] === 0) {
-                  break;
-                } else if (newBoard[newY][newX] === 3) {
-                  break;
-                } else if (newBoard[newY][newX] !== turnColor) {
-                  if (k > 1) {
-                    if (newBoard[newY][newX] === newBoard[i + y1][j + x1]) {
-                      break;
-                    } else {
-                      newBoard[i][j] = 3;
-                      newBorderRadii[i][j] = borderRadii[i][j] || getRandomBorderRadius();
+              if (newBoard?.[newY] !== undefined) {
+                const cellValue = newBoard[newY][newX];
 
-                      break;
-                    }
+                if (cellValue === 0 || cellValue === 3) break; // 空または候補地の場合はスキップ
+                if (cellValue === turnColor) {
+                  hasOpponentBetween = true; // 間に相手の石がある
+                } else {
+                  if (hasOpponentBetween) {
+                    newBoard[i][j] = 3; // 候補地としてマーク
+                    newBorderRadii[i][j] = borderRadii[i][j] || getRandomBorderRadius(); // ボーダーラディウス設定
                   }
+                  break;
                 }
               }
             }
@@ -83,6 +79,7 @@ export const useGame = () => {
       }
     }
   };
+
   for (let a = 0; a < 8; a++) {
     for (let b = 0; b < 8; b++) {
       if (board[b][a] === 3) {
@@ -96,12 +93,7 @@ export const useGame = () => {
       const [x_d, y_d] = direct;
 
       for (let i = 1; i < 8; i++) {
-        if (
-          board[y + y_d * i] !== undefined &&
-          board[y + y_d * i][x + x_d * i] !== undefined &&
-          board[y + y_d][x + x_d] !== 0 &&
-          board[y + y_d][x + x_d] === 3 - turnColor
-        ) {
+        if (board[y + y_d * i]?.[x + x_d * i] !== undefined && board[y + y_d][x + x_d] !== 0 && board[y + y_d][x + x_d] === 3 - turnColor) {
           if (board[y + y_d * i][x + x_d * i] === turnColor) {
             Array.from({ length: i + 1 }, (_, s) => {
               newBoard[y + y_d * s][x + x_d * s] = turnColor;

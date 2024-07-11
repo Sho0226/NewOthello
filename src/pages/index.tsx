@@ -1,6 +1,7 @@
 import styles from './index.module.css';
 import { useGame } from '../hooks/useGame';
 import { Board } from '../components/Board/Board';
+
 const Home = () => {
   const { board, borderRadii, clickHandler, result, turnColor } = useGame();
 

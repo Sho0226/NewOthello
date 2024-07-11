@@ -38,7 +38,7 @@
   cursor: pointer;
   animation:
     fade-in 1s ease-in-out,
-    blink 0.75s 1.75s infinite; /* 最初にフェードインし、その後点滅 */
+    blink 1.5s 2s infinite; /* 0.75s ではなく 1.5s に設定して同期を確実に */
 }
 
 .cellstyle {
